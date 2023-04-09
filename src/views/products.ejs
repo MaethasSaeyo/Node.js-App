@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<head>
+<body>
+  
+
+  <!--Contaainer start-->
+  <section id="home" class="hero-section" style="text-align: center;">
+    <div class="container">
+      <h1>Products</h1>
+      <% products.map((product)=>{ %>
+        <h4>
+          <br>
+         <a href="/products/<%=product.id%>"> 
+          <%=product.productTitle%>
+          </a>
+        </h4>
+        <b>
+          <%=product.productDescription%>
+        </b>
+        <b>
+          <%=product.productPtice%> ฿
+        </b>
+        <%})%>
+    </div>
+  </section>
+  <!--Contaainer end-->
+</body>
+</html>

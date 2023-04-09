@@ -6,20 +6,26 @@ const path = require('path');
 
 
 const app = express();
-const port = 5000;
+const PORT = process.env.PORT;
+const productsRouter =require("./src/router/productsRouter");
 
 
 app.use(morgan('combined'))
-app.use(express.static(path.join(__dirname,"/public/")));
+app.use(express.static(path.join(__dirname, "/public/")));
 
-app.get("/",(req,res) =>{
 
-  res.send('Hello Maethas123');
+app.set("views", "./src/views");
+app.set("view enging", "ejs");
 
-})
 
-app.listen(port,()=>{
+app.use("/products", productsRouter)
 
-  debug("Listening on port " + chalk.green(port));
+app.get('/', (req, res) => {
+  res.render('index.ejs', { username: 'My pond', customers: ["Maethas", "Benyapa", "Prayut"] });
+});
+
+app.listen(PORT, () => {
+
+  debug("Listening on PORT " + chalk.green(PORT));
 
 })
